@@ -175,6 +175,7 @@ Usage:
 
 <a name="forEach" />
 <a name="each" />
+
 ### each(arr, iterator, callback)
 
 Applies the function `iterator` to each item in `arr`, in parallel.
@@ -239,6 +240,7 @@ async.each(openFiles, function( file, callback) {
 
 <a name="forEachSeries" />
 <a name="eachSeries" />
+
 ### eachSeries(arr, iterator, callback)
 
 The same as [`each`](#each), only `iterator` is applied to each item in `arr` in
@@ -250,6 +252,7 @@ This means the `iterator` functions will complete in order.
 
 <a name="forEachLimit" />
 <a name="eachLimit" />
+
 ### eachLimit(arr, limit, iterator, callback)
 
 The same as [`each`](#each), only no more than `limit` `iterator`s will be simultaneously 
@@ -283,6 +286,7 @@ async.eachLimit(documents, 20, requestApi, function(err){
 ---------------------------------------
 
 <a name="map" />
+
 ### map(arr, iterator, callback)
 
 Produces a new array of values by mapping each value in `arr` through
@@ -316,6 +320,7 @@ async.map(['file1','file2','file3'], fs.stat, function(err, results){
 ---------------------------------------
 
 <a name="mapSeries" />
+
 ### mapSeries(arr, iterator, callback)
 
 The same as [`map`](#map), only the `iterator` is applied to each item in `arr` in
@@ -326,6 +331,7 @@ The results array will be in the same order as the original.
 ---------------------------------------
 
 <a name="mapLimit" />
+
 ### mapLimit(arr, limit, iterator, callback)
 
 The same as [`map`](#map), only no more than `limit` `iterator`s will be simultaneously 
@@ -357,6 +363,7 @@ async.mapLimit(['file1','file2','file3'], 1, fs.stat, function(err, results){
 
 <a name="select" />
 <a name="filter" />
+
 ### filter(arr, iterator, callback)
 
 __Alias:__ `select`
@@ -389,6 +396,7 @@ async.filter(['file1','file2','file3'], fs.exists, function(results){
 
 <a name="selectSeries" />
 <a name="filterSeries" />
+
 ### filterSeries(arr, iterator, callback)
 
 __Alias:__ `selectSeries`
@@ -400,6 +408,7 @@ The results array will be in the same order as the original.
 ---------------------------------------
 
 <a name="reject" />
+
 ### reject(arr, iterator, callback)
 
 The opposite of [`filter`](#filter). Removes values that pass an `async` truth test.
@@ -407,6 +416,7 @@ The opposite of [`filter`](#filter). Removes values that pass an `async` truth t
 ---------------------------------------
 
 <a name="rejectSeries" />
+
 ### rejectSeries(arr, iterator, callback)
 
 The same as [`reject`](#reject), only the `iterator` is applied to each item in `arr`
@@ -416,6 +426,7 @@ in series.
 ---------------------------------------
 
 <a name="reduce" />
+
 ### reduce(arr, memo, iterator, callback)
 
 __Aliases:__ `inject`, `foldl`
@@ -458,6 +469,7 @@ async.reduce([1,2,3], 0, function(memo, item, callback){
 ---------------------------------------
 
 <a name="reduceRight" />
+
 ### reduceRight(arr, memo, iterator, callback)
 
 __Alias:__ `foldr`
@@ -468,6 +480,7 @@ Same as [`reduce`](#reduce), only operates on `arr` in reverse order.
 ---------------------------------------
 
 <a name="detect" />
+
 ### detect(arr, iterator, callback)
 
 Returns the first value in `arr` that passes an async truth test. The
@@ -499,6 +512,7 @@ async.detect(['file1','file2','file3'], fs.exists, function(result){
 ---------------------------------------
 
 <a name="detectSeries" />
+
 ### detectSeries(arr, iterator, callback)
 
 The same as [`detect`](#detect), only the `iterator` is applied to each item in `arr`
@@ -509,6 +523,7 @@ terms of array order) that passes the truth test.
 ---------------------------------------
 
 <a name="sortBy" />
+
 ### sortBy(arr, iterator, callback)
 
 Sorts a list by the results of running each `arr` value through an async `iterator`.
@@ -560,6 +575,7 @@ async.sortBy([1,9,3,5], function(x, callback){
 ---------------------------------------
 
 <a name="some" />
+
 ### some(arr, iterator, callback)
 
 __Alias:__ `any`
@@ -591,6 +607,7 @@ async.some(['file1','file2','file3'], fs.exists, function(result){
 ---------------------------------------
 
 <a name="every" />
+
 ### every(arr, iterator, callback)
 
 __Alias:__ `all`
@@ -621,6 +638,7 @@ async.every(['file1','file2','file3'], fs.exists, function(result){
 ---------------------------------------
 
 <a name="concat" />
+
 ### concat(arr, iterator, callback)
 
 Applies `iterator` to each item in `arr`, concatenating the results. Returns the
@@ -649,6 +667,7 @@ async.concat(['dir1','dir2','dir3'], fs.readdir, function(err, files){
 ---------------------------------------
 
 <a name="concatSeries" />
+
 ### concatSeries(arr, iterator, callback)
 
 Same as [`concat`](#concat), but executes in series instead of parallel.
@@ -657,6 +676,7 @@ Same as [`concat`](#concat), but executes in series instead of parallel.
 ## Control Flow
 
 <a name="series" />
+
 ### series(tasks, [callback])
 
 Run the functions in the `tasks` array in series, each one running once the previous
@@ -727,6 +747,7 @@ function(err, results) {
 ---------------------------------------
 
 <a name="parallel" />
+
 ### parallel(tasks, [callback])
 
 Run the `tasks` array of functions in parallel, without waiting until the previous
@@ -793,6 +814,7 @@ function(err, results) {
 ---------------------------------------
 
 <a name="parallelLimit" />
+
 ### parallelLimit(tasks, limit, [callback])
 
 The same as [`parallel`](#parallel), only `tasks` are executed in parallel 
@@ -814,6 +836,7 @@ __Arguments__
 ---------------------------------------
 
 <a name="whilst" />
+
 ### whilst(test, fn, callback)
 
 Repeatedly call `fn`, while `test` returns `true`. Calls `callback` when stopped,
@@ -848,6 +871,7 @@ async.whilst(
 ---------------------------------------
 
 <a name="doWhilst" />
+
 ### doWhilst(fn, test, callback)
 
 The post-check version of [`whilst`](#whilst). To reflect the difference in 
@@ -858,6 +882,7 @@ the order of operations, the arguments `test` and `fn` are switched.
 ---------------------------------------
 
 <a name="until" />
+
 ### until(test, fn, callback)
 
 Repeatedly call `fn` until `test` returns `true`. Calls `callback` when stopped,
@@ -868,6 +893,7 @@ The inverse of [`whilst`](#whilst).
 ---------------------------------------
 
 <a name="doUntil" />
+
 ### doUntil(fn, test, callback)
 
 Like [`doWhilst`](#doWhilst), except the `test` is inverted. Note the argument ordering differs from `until`.
@@ -875,6 +901,7 @@ Like [`doWhilst`](#doWhilst), except the `test` is inverted. Note the argument o
 ---------------------------------------
 
 <a name="forever" />
+
 ### forever(fn, errback)
 
 Calls the asynchronous function `fn` with a callback parameter that allows it to
@@ -898,7 +925,8 @@ async.forever(
 
 ---------------------------------------
 
-<a name="waterfall" />
+<a name="waterfall" /> 
+
 ### waterfall(tasks, [callback])
 
 Runs the `tasks` array of functions in series, each passing their results to the next in
@@ -939,6 +967,7 @@ async.waterfall([
 
 ---------------------------------------
 <a name="compose" />
+
 ### compose(fn1, fn2...)
 
 Creates a function which is a composition of the passed asynchronous
@@ -977,6 +1006,7 @@ add1mul3(4, function (err, result) {
 
 ---------------------------------------
 <a name="seq" />
+
 ### seq(fn1, fn2...)
 
 Version of the compose function that is more natural to read.
@@ -1017,6 +1047,7 @@ app.get('/cats', function(request, response) {
 
 ---------------------------------------
 <a name="applyEach" />
+
 ### applyEach(fns, args..., callback)
 
 Applies the provided arguments to each function in the array, calling 
@@ -1048,6 +1079,7 @@ async.each(
 ---------------------------------------
 
 <a name="applyEachSeries" />
+
 ### applyEachSeries(arr, iterator, callback)
 
 The same as [`applyEach`](#applyEach) only the functions are applied in series.
@@ -1055,6 +1087,7 @@ The same as [`applyEach`](#applyEach) only the functions are applied in series.
 ---------------------------------------
 
 <a name="queue" />
+
 ### queue(worker, concurrency)
 
 Creates a `queue` object with the specified `concurrency`. Tasks added to the
@@ -1137,6 +1170,7 @@ q.unshift({name: 'bar'}, function (err) {
 ---------------------------------------
 
 <a name="priorityQueue" />
+
 ### priorityQueue(worker, concurrency)
 
 The same as [`queue`](#queue) only tasks are assigned a priority and completed in ascending priority order. There are two differences between `queue` and `priorityQueue` objects:
@@ -1148,6 +1182,7 @@ The same as [`queue`](#queue) only tasks are assigned a priority and completed i
 ---------------------------------------
 
 <a name="cargo" />
+
 ### cargo(worker, [payload])
 
 Creates a `cargo` object with the specified payload. Tasks added to the
@@ -1213,6 +1248,7 @@ cargo.push({name: 'baz'}, function (err) {
 ---------------------------------------
 
 <a name="auto" />
+
 ### auto(tasks, [callback])
 
 Determines the best order for running the functions in `tasks`, based on their 
@@ -1346,6 +1382,7 @@ new tasks much easier (and the code more readable).
 ---------------------------------------
 
 <a name="retry" />
+
 ### retry([times = 5], task, [callback])
 
 Attempts to get a successful response from `task` no more than `times` times before
@@ -1388,6 +1425,7 @@ async.auto({
 ---------------------------------------
 
 <a name="iterator" />
+
 ### iterator(tasks)
 
 Creates an iterator function which calls the next function in the `tasks` array,
@@ -1424,6 +1462,7 @@ node> nextfn();
 ---------------------------------------
 
 <a name="apply" />
+
 ### apply(function, arguments..)
 
 Creates a continuation function with some arguments already applied. 
@@ -1475,6 +1514,7 @@ three
 ---------------------------------------
 
 <a name="nextTick" />
+
 ### nextTick(callback)
 
 Calls `callback` on a later loop around the event loop. In Node.js this just
@@ -1500,6 +1540,7 @@ call_order.push('one')
 ```
 
 <a name="times" />
+
 ### times(n, callback)
 
 Calls the `callback` function `n` times, and accumulates results in the same manner
@@ -1530,6 +1571,7 @@ async.times(5, function(n, next){
 ```
 
 <a name="timesSeries" />
+
 ### timesSeries(n, callback)
 
 The same as [`times`](#times), only the iterator is applied to each item in `arr` in
@@ -1540,6 +1582,7 @@ The results array will be in the same order as the original.
 ## Utils
 
 <a name="memoize" />
+
 ### memoize(fn, [hasher])
 
 Caches the results of an `async` function. When creating a hash to store function
@@ -1572,6 +1615,7 @@ fn('some name', function () {
 ```
 
 <a name="unmemoize" />
+
 ### unmemoize(fn)
 
 Undoes a [`memoize`](#memoize)d function, reverting it to the original, unmemoized
@@ -1582,6 +1626,7 @@ __Arguments__
 * `fn` - the memoized function
 
 <a name="log" />
+
 ### log(function, arguments)
 
 Logs the result of an `async` function to the `console`. Only works in Node.js or
@@ -1611,6 +1656,7 @@ node> async.log(hello, 'world');
 ---------------------------------------
 
 <a name="dir" />
+
 ### dir(function, arguments)
 
 Logs the result of an `async` function to the `console` using `console.dir` to
@@ -1641,6 +1687,7 @@ node> async.dir(hello, 'world');
 ---------------------------------------
 
 <a name="noConflict" />
+
 ### noConflict()
 
 Changes the value of `async` back to its original value, returning a reference to the
